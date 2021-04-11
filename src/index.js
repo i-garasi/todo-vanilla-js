@@ -13,15 +13,13 @@ const onClickAdd = () => {
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", () => {
-    const removeTarget = completeButton.parentElement;
-    removeTask(removeTarget);
+    removeTask(completeButton.parentElement);
   });
 
   const removeButton = document.createElement("button");
   removeButton.innerText = "削除";
   removeButton.addEventListener("click", () => {
-    const removeTarget = removeButton.parentElement;
-    removeTask(removeTarget);
+    removeTask(removeButton.parentElement);
   });
 
   div.appendChild(li);
