@@ -19,7 +19,8 @@ const onClickAdd = () => {
   const removeButton = document.createElement("button");
   removeButton.innerText = "削除";
   removeButton.addEventListener("click", () => {
-    alert("削除");
+    const removeTarget = removeButton.parentElement;
+    document.getElementById("incomplete-list").removeChild(removeTarget);
   });
 
   div.appendChild(li);
