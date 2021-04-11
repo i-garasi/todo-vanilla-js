@@ -12,14 +12,32 @@ const onClickAdd = () => {
 
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
+
+  // 完了ボタン押下時の処理
   completeButton.addEventListener("click", () => {
-    removeTask(completeButton.parentElement);
+    const target = completeButton.parentNode;
+    const text = target.firstElementChild.innerText;
+    removeTask(target);
+    target.textContent = null;
+
+    const li = document.createElement("li");
+    li.innerText = text;
+
+    const backButton = document.createElement("button");
+    backButton.innerText = "戻す";
+
+    target.appendChild(li);
+    target.appendChild(backButton);
+
+    document.getElementById("complete-list").appendChild(target);
   });
 
   const removeButton = document.createElement("button");
   removeButton.innerText = "削除";
+
+  // 削除ボタン押下時の処理
   removeButton.addEventListener("click", () => {
-    removeTask(removeButton.parentElement);
+    removeTask(removeButton.parentNode);
   });
 
   div.appendChild(li);
