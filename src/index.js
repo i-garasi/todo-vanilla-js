@@ -26,9 +26,24 @@ const onClickAdd = () => {
     const backButton = document.createElement("button");
     backButton.innerText = "戻す";
 
+    // 戻す押下時の処理
+    backButton.addEventListener("click", () => {
+      const target = backButton.parentNode;
+      const text = target.firstElementChild.innerText;
+      document.getElementById("complete-list").removeChild(target);
+      target.textContent = null;
+
+      const li = document.createElement("li");
+      li.innerText = text;
+
+      target.appendChild(li);
+      target.appendChild(completeButton);
+      target.appendChild(removeButton);
+      document.getElementById("incomplete-list").appendChild(target);
+    });
+
     target.appendChild(li);
     target.appendChild(backButton);
-
     document.getElementById("complete-list").appendChild(target);
   });
 
@@ -43,7 +58,6 @@ const onClickAdd = () => {
   div.appendChild(li);
   div.appendChild(completeButton);
   div.appendChild(removeButton);
-
   document.getElementById("incomplete-list").appendChild(div);
 };
 
