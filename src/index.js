@@ -13,14 +13,15 @@ const onClickAdd = () => {
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", () => {
-    alert("完了");
+    const removeTarget = completeButton.parentElement;
+    removeTask(removeTarget);
   });
 
   const removeButton = document.createElement("button");
   removeButton.innerText = "削除";
   removeButton.addEventListener("click", () => {
     const removeTarget = removeButton.parentElement;
-    document.getElementById("incomplete-list").removeChild(removeTarget);
+    removeTask(removeTarget);
   });
 
   div.appendChild(li);
@@ -28,6 +29,10 @@ const onClickAdd = () => {
   div.appendChild(removeButton);
 
   document.getElementById("incomplete-list").appendChild(div);
+};
+
+const removeTask = (target) => {
+  document.getElementById("incomplete-list").removeChild(target);
 };
 
 document
